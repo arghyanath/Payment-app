@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export function SignHeader({ children }: { children: ReactNode }) {
     return <div className=" text-2xl text-center font-bold">
