@@ -4,6 +4,8 @@ import './App.css'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
+import { UnprotectedRoutes } from './components/auth/UnprotectedRoutes'
+import { ProtectedRoutes } from './components/auth/ProtectedRoutes'
 
 function App() {
 
@@ -13,9 +15,9 @@ function App() {
       <div>
         <BrowserRouter>
           <Routes>
-            <Route path='/signin' element={<Signin />} />
-            <Route path='/signup' element={<Signup />} />
-            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/signin' element={<UnprotectedRoutes><Signin /></UnprotectedRoutes>} />
+            <Route path='/signup' element={<UnprotectedRoutes><Signup /></UnprotectedRoutes>} />
+            <Route path='/dashboard' element={<ProtectedRoutes> <Dashboard /></ProtectedRoutes>} />
           </Routes>
         </BrowserRouter>
       </div>
