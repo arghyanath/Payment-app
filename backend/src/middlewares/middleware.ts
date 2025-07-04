@@ -7,7 +7,7 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
     const authHeader = req.headers["authorization"]
 
     if (!authHeader || !authHeader.startsWith("Bearer")) {
-        res.status(403).json({})
+        res.status(401).json({})
     }
 
     const token = authHeader?.split(" ")[1]
@@ -19,12 +19,12 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
             req.userId = (decoded as JwtPayload).userId
             next()
         } else {
-            res.status(403).json({})
+            res.status(401).json({})
             return
         }
 
     } catch (error) {
-        res.status(403).json({})
+        res.status(401).json({})
         return
     }
 
